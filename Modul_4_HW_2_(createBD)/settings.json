@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-PI7S7VE\\SQLEXPRESS;Database=MyDb;Integrated Security=True;"
+  }
+}
