@@ -13,6 +13,6 @@ namespace Modul_4_HW_2__createBD_.Entities
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Company { get; set; }
-        public List<Project> Projects { get; set; } = new List<Project>();
+        public virtual List<Project> Projects { get; set; } = new List<Project>();
     }
 }

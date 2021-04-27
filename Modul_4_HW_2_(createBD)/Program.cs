@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -7,16 +8,36 @@ namespace Modul_4_HW_2__createBD_
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("settings.json");
-            var config = builder.Build();
-            var connectionString = config.GetConnectionString("DefaultConnection");
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).LoadThreeTables();
+            }
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationsContext>();
-            var options = optionsBuilder.UseSqlServer(connectionString).Options;
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).DateDiff();
+            }
+
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).ChangeEntity();
+            }
+
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).AddEntity();
+            }
+
+            // await using (var context = new SampleContextFactory().CreateDbContext(args))
+            // {
+            //    await new LazyLoading(context).DeleteEntity();
+            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).GroupRoleEmployee();
+            }
         }
     }
 }
