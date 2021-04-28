@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Modul_4_HW_2__createBD_.Entities
 {
@@ -18,5 +19,10 @@ namespace Modul_4_HW_2__createBD_.Entities
         public virtual Office Office { get; set; }
 
         public virtual List<EmployeeProject> EmployeeProjects { get; set; } = new List<EmployeeProject>();
+
+        internal Task Remove()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

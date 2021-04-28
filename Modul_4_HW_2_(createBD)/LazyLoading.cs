@@ -14,7 +14,7 @@ namespace Modul_4_HW_2__createBD_
             _context = context;
         }
 
-        public async Task LoadThreeTables()
+        public async Task LoadThreeTablesAsync()
         {
             var loadThreeTables = await _context.EmployeeProjects.Select(z => new
             {
@@ -31,7 +31,7 @@ namespace Modul_4_HW_2__createBD_
             }
         }
 
-        public async Task DateDiff()
+        public async Task DateDiffAsync()
         {
             var diff = await _context.Employees
                      .Select(z => new
@@ -49,7 +49,7 @@ namespace Modul_4_HW_2__createBD_
             }
         }
 
-        public async Task ChangeEntity()
+        public async Task ChangeEntityAsync()
         {
             var changeEntity = await _context.Employees.FirstOrDefaultAsync(z => z.EmployeeId == 1);
             changeEntity.FirstName = "Vavriichuk";
@@ -58,15 +58,13 @@ namespace Modul_4_HW_2__createBD_
             _context.SaveChanges();
         }
 
-        public async Task AddEntity()
+        public async Task AddEntityAsync()
         {
             var addEntityEmployeeProject = await _context.EmployeeProjects.AddAsync(new Entities.EmployeeProject
             {
-                EmployeeProjectId = 10,
                 Rate = 100,
                 StartedDate = new DateTime(1876, 12, 30),
                 ProjectId = 1,
-                EmployeeId = 10,
                 Employee = new Entities.Employee
                 {
                     FirstName = "AAA",
@@ -77,16 +75,19 @@ namespace Modul_4_HW_2__createBD_
                     OfficeId = 1,
                 }
             });
+
             _context.SaveChanges();
         }
 
-        // public async Task DeleteEntity()
-        // {
-        //    var deleteEntity = await _context.Employees.Remove(Entities.Employee employeeId == 3);
+        public async Task DeleteEntityAsync()
+        {
+            var deleteEntity = await _context.Employees.FirstOrDefaultAsync();
+            _context.Remove(deleteEntity);
 
-        // _context.SaveChanges();
-        // }
-        public async Task GroupRoleEmployee()
+            _context.SaveChanges();
+        }
+
+        public async Task GroupRoleEmployeeAsync()
         {
             var groupRoleEmployee = await _context.Titles
                 .Where(z => z.Name

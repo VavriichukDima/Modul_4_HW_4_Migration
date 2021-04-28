@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using System.Threading.Tasks;
 
 namespace Modul_4_HW_2__createBD_
 {
@@ -12,31 +8,32 @@ namespace Modul_4_HW_2__createBD_
         {
             await using (var context = new SampleContextFactory().CreateDbContext(args))
             {
-                await new LazyLoading(context).LoadThreeTables();
+                await new LazyLoading(context).LoadThreeTablesAsync();
             }
 
             await using (var context = new SampleContextFactory().CreateDbContext(args))
             {
-                await new LazyLoading(context).DateDiff();
+                await new LazyLoading(context).DateDiffAsync();
             }
 
             await using (var context = new SampleContextFactory().CreateDbContext(args))
             {
-                await new LazyLoading(context).ChangeEntity();
+                await new LazyLoading(context).ChangeEntityAsync();
             }
 
             await using (var context = new SampleContextFactory().CreateDbContext(args))
             {
-                await new LazyLoading(context).AddEntity();
+                await new LazyLoading(context).AddEntityAsync();
             }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).DeleteEntity();
-            // }
             await using (var context = new SampleContextFactory().CreateDbContext(args))
             {
-                await new LazyLoading(context).GroupRoleEmployee();
+                await new LazyLoading(context).DeleteEntityAsync();
+            }
+
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).GroupRoleEmployeeAsync();
             }
         }
     }
