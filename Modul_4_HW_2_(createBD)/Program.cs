@@ -11,30 +11,30 @@ namespace Modul_4_HW_2__createBD_
                 await new LazyLoading(context).LoadThreeTablesAsync();
             }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).DateDiffAsync();
-            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).DateDiffAsync();
+            }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).ChangeEntityAsync();
-            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).ChangeEntityAsync();
+            }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).AddEntityAsync();
-            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).AddEntityAsync();
+            }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).DeleteEntityAsync();
-            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).DeleteEntityAsync();
+            }
 
-            // await using (var context = new SampleContextFactory().CreateDbContext(args))
-            // {
-            //    await new LazyLoading(context).GroupRoleEmployeeAsync();
-            // }
+            await using (var context = new SampleContextFactory().CreateDbContext(args))
+            {
+                await new LazyLoading(context).GroupRoleEmployeeAsync();
+            }
         }
     }
 }
